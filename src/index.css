@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 240 10% 97.6%;
+    --foreground: 240 14% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 14% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 14% 9%;
+    --muted: 240 6% 95%;
+    --muted-foreground: 240 4% 44%;
+    --accent: 240 6% 94.5%;
+    --accent-foreground: 240 14% 9%;
+    --border: 240 6% 90%;
+    --input: 240 6% 86%;
+    --sidebar: 240 12% 98.8%;
+    --sidebar-foreground: 240 10% 22%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 243 75% 59%;
+
+    /* Chart tokens — validated categorical reference palette (light). */
+    --chart-surface: #ffffff;
+    --chart-grid: #e8e8ec;
+    --chart-axis: #8b8b94;
+    --chart-ink: #52514e;
+    --s1: #2a78d6;
+    --s2: #eb6834;
+    --s3: #1baf7a;
+    --s4: #eda100;
+    --s5: #e87ba4;
+    --s6: #008300;
+    --s7: #6250d6;
+    --s8: #e34948;
+    /* Sequential (blue) for heatmaps — 0 is "nothing". */
+    --seq-0: #ececf0;
+    --seq-1: #b7d3f6;
+    --seq-2: #86b6ef;
+    --seq-3: #3987e5;
+    --seq-4: #256abf;
+    --seq-5: #184f95;
+    /* Ordinal ramp for funnels. */
+    --ord-1: #184f95;
+    --ord-2: #256abf;
+    --ord-3: #3987e5;
+    --ord-4: #6da7ec;
+    --ord-5: #86b6ef;
+    /* Label ink inside each ordinal fill (white on dark fills, near-black on light ones). */
+    --ord-ink-1: #ffffff;
+    --ord-ink-2: #ffffff;
+    --ord-ink-3: #ffffff;
+    --ord-ink-4: #0b0b0b;
+    --ord-ink-5: #0b0b0b;
+    /* Status — always paired with icon + label. */
+    --good: #0ca30c;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #d03b3b;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 240 10% 4.6%;
+    --foreground: 240 6% 94%;
+    --card: 240 8% 7.6%;
+    --card-foreground: 240 6% 94%;
+    --popover: 240 8% 8.6%;
+    --popover-foreground: 240 6% 94%;
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 63%;
+    --accent: 240 6% 13.5%;
+    --accent-foreground: 240 6% 94%;
+    --border: 240 6% 15.5%;
+    --input: 240 6% 20%;
+    --sidebar: 240 10% 5.8%;
+    --sidebar-foreground: 240 6% 84%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 239 84% 67%;
+
+    --chart-surface: #121215;
+    --chart-grid: #25252b;
+    --chart-axis: #898781;
+    --chart-ink: #c3c2b7;
+    --s1: #3987e5;
+    --s2: #d95926;
+    --s3: #199e70;
+    --s4: #c98500;
+    --s5: #d55181;
+    --s6: #0ca30c;
+    --s7: #9085e9;
+    --s8: #e66767;
+    --seq-0: #1e1e24;
+    --seq-1: #184f95;
+    --seq-2: #256abf;
+    --seq-3: #3987e5;
+    --seq-4: #6da7ec;
+    --seq-5: #9ec5f4;
+    --ord-1: #9ec5f4;
+    --ord-2: #6da7ec;
+    --ord-3: #3987e5;
+    --ord-4: #256abf;
+    --ord-5: #184f95;
+    --ord-ink-1: #0b0b0b;
+    --ord-ink-2: #0b0b0b;
+    --ord-ink-3: #ffffff;
+    --ord-ink-4: #ffffff;
+    --ord-ink-5: #ffffff;
+  }
+
+  /* Accent presets */
+  :root[data-accent='violet'] { --primary: 262 83% 58%; --ring: 262 83% 58%; }
+  :root[data-accent='blue'] { --primary: 221 83% 53%; --ring: 221 83% 53%; }
+  :root[data-accent='emerald'] { --primary: 161 94% 30%; --ring: 161 94% 30%; }
+  :root[data-accent='rose'] { --primary: 347 77% 50%; --ring: 347 77% 50%; }
+  :root[data-accent='orange'] { --primary: 21 90% 48%; --ring: 21 90% 48%; }
+  .dark[data-accent='violet'] { --primary: 258 90% 66%; --ring: 258 90% 66%; }
+  .dark[data-accent='blue'] { --primary: 217 91% 60%; --ring: 217 91% 60%; }
+  .dark[data-accent='emerald'] { --primary: 160 84% 39%; --ring: 160 84% 39%; }
+  .dark[data-accent='rose'] { --primary: 350 89% 60%; --ring: 350 89% 60%; }
+  .dark[data-accent='orange'] { --primary: 25 95% 53%; --ring: 25 95% 53%; }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+  }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring) / 0.7);
+    outline-offset: 2px;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator,
+  input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator,
+  .dark input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  /* Thin, quiet scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.25) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.22);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.4);
+  }
+}
+
+@layer components {
+  .page {
+    @apply mx-auto w-full max-w-[1400px] px-4 pb-24 pt-5 sm:px-6 lg:px-8 lg:pb-12;
+  }
+  .label-caps {
+    @apply text-[11px] font-semibold uppercase tracking-[0.06em] text-muted-foreground;
+  }
+  .surface-glow {
+    background:
+      radial-gradient(1200px 380px at 0% -10%, hsl(var(--primary) / 0.12), transparent 60%),
+      radial-gradient(800px 300px at 100% -20%, hsl(280 80% 60% / 0.08), transparent 60%);
+  }
+  .hairline {
+    box-shadow: inset 0 0 0 1px hsl(var(--border));
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Recharts polish */
+.recharts-wrapper,
+.recharts-surface {
+  outline: none;
+}
+.recharts-cartesian-axis-tick-value {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

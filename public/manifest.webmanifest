@@ -1,0 +1,13 @@
+{
+  "name": "Pursuit — Job Search OS",
+  "short_name": "Pursuit",
+  "description": "Track applications, run cold outreach, manage your network and see what works.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0b10",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
