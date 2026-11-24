@@ -4,6 +4,8 @@ A local-first web app that turns a job search into a system: track every applica
 
 > **Private by design.** Everything is stored in your browser (IndexedDB). No account, no server, no tracking. Export a backup any time.
 
+**Try it live: https://wrimo2.github.io/Job-Application-OS/** — nothing to install. New to the app? Read the [User Guide](Pursuit-User-Guide.docx).
+
 ## Run it
 
 ```bash
